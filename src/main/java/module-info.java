@@ -1,4 +1,4 @@
-module org.example.projetolacif {
+module main {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,6 +10,6 @@ module org.example.projetolacif {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
 
-    opens org.example.projetolacif to javafx.fxml;
-    exports org.example.projetolacif;
+    opens main to javafx.fxml;
+    exports main;
 }

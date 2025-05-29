@@ -1,9 +1,9 @@
-package org.example.projetolacif;
+package main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HomeController {
+public class UsuarioController {
     @FXML
     private Label welcomeText;
 
