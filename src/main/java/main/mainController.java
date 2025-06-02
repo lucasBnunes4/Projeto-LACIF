@@ -1,5 +1,8 @@
 package main;
 
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.StackPane;
+import main.Nav;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +17,10 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
-public class mainController {
+public class mainController extends Nav {
+
+    @FXML
+    private StackPane mainContent;
 
     // Variáveis para cada botão (com @FXML)
     @FXML
@@ -30,17 +36,18 @@ public class mainController {
     private Button amostrasBtn;
 
     @FXML
-    private Button sairBtn;
-
-    // Métodos de ação para cada botão:
-    @FXML
-    private void handleUsuario() {
-        showAlert("Menu Usuário", "Você clicou em USUÁRIO");
-    }
+    private Button inicioBtn;
 
     @FXML
-    private void handleMateriais() {
-        showAlert("Menu Materiais", "Você clicou em MATERIAIS");
+    private MenuItem addMateriais;
+
+    @FXML
+    private MenuItem consMateriais;
+
+    // Métodos em botoes para abrir paginas
+    @FXML
+    private void goToUsuario(ActionEvent event) {
+        loadScreen("/main/usuario.fxml", event);
     }
 
     @FXML
@@ -54,8 +61,40 @@ public class mainController {
     }
 
     @FXML
-    private void handleSair() {
-        System.exit(0);
+    private void returnToStart(ActionEvent event) {
+        loadScreen("/main/hello-view.fxml", event);
+    }
+
+
+    // Metodos para abrir paginas pelos menus
+    @FXML
+    private void openAddMateriais(ActionEvent event) {
+        Nav.loadScreenMenu("/main/addMateriais.fxml", event);
+    }
+
+    @FXML
+    private void openRetMateriais(ActionEvent event) {
+        Nav.loadScreenMenu("/main/retMateriais.fxml", event);
+    }
+
+    @FXML
+    private void openAddAtividades(ActionEvent event) {
+        Nav.loadScreenMenu("/main/addAtividades.fxml", event);
+    }
+
+    @FXML
+    private void openConsAtividades(ActionEvent event) {
+        Nav.loadScreenMenu("/main/consAtividades.fxml", event);
+    }
+
+    @FXML
+    private void openAddAmostras(ActionEvent event){
+        Nav.loadScreenMenu("/main/addAmostras.fxml", event);
+    }
+
+    @FXML
+    private void openConsAmostras(ActionEvent event){
+        Nav.loadScreenMenu("/main/consAmostras.fxml", event);
     }
 
     // Método auxiliar para mostrar alertas

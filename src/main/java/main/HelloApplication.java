@@ -11,7 +11,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/main/hello-view.fxml"));
-            Scene scene = new Scene(root, 600, 400);
+            Scene scene = new Scene(root, 1000, 600);
             stage.setTitle("Sistema LACIF");
             stage.setScene(scene);
             stage.show();

@@ -3,38 +3,52 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b8b8b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.mainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #b8b8b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.mainController">
     <left>
-        <BorderPane prefHeight="400.0" prefWidth="114.0" BorderPane.alignment="CENTER">
+        <BorderPane prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <top>
-                <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="114.0" spacing="40.0" style="-fx-background-color: #00345e;" BorderPane.alignment="CENTER">
+                <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="150.0" spacing="80.0" style="-fx-background-color: #2E8B57;" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="usuarioBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#handleUsuario" opacity="0.7" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #d6d6d6;" text="USUÁRIO" textAlignment="CENTER">
+                        <Button fx:id="usuarioBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#goToUsuario" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #FFFAF0;" text="USUÁRIO" textAlignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
                         </Button>
-                        <Button fx:id="materiaisBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#handleMateriais" opacity="0.7" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #d6d6d6;" text="MATERIAIS" textAlignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="atividadesBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#handleAtividades" opacity="0.7" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #d6d6d6;" text="ATIVIDADES" textAlignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="amostrasBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#handleAmostras" opacity="0.7" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #d6d6d6;" text="AMOSTRAS" textAlignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="sairBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#handleSair" opacity="0.7" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #d6d6d6;" text="SAIR" textAlignment="CENTER">
+                  <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="MATERIAIS" textFill="SEAGREEN">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#openAddMateriais" text="ADIÇÃO E CONSULTA" />
+                      <MenuItem mnemonicParsing="false" onAction="#openRetMateriais" text="RETIRADA E DEVOLUÇÃO" />
+                    </items>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="ATIVIDADES" textFill="SEAGREEN">
+                     <items>
+                        <MenuItem onAction="#openAddAtividades" mnemonicParsing="false" text="ADICIONAR" />
+                        <MenuItem onAction="#openConsAtividades" mnemonicParsing="false" text="CONSULTAR" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="AMOSTRAS" textFill="SEAGREEN">
+                     <items>
+                        <MenuItem onAction="#openAddAmostras" mnemonicParsing="false" text="ADICIONAR" />
+                        <MenuItem onAction="#openConsAmostras" mnemonicParsing="false" text="CONSULTAR" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </SplitMenuButton>
+                        <Button fx:id="inicioBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#returnToStart" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #FFFAF0;" text="SAIR" textAlignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -47,18 +61,18 @@
                         <Insets />
                     </BorderPane.margin>
                     <padding>
-                        <Insets bottom="20.0" left="6.0" right="6.0" top="20.0" />
+                        <Insets bottom="20.0" left="6.0" right="6.0" top="40.0" />
                     </padding>
                 </VBox>
             </top>
         </BorderPane>
     </left>
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFAF0;" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="9.0" layoutY="8.0" prefHeight="46.0" prefWidth="467.0" text="Sistema de Gerenciamento LACIF" textAlignment="CENTER" textFill="#013d6d" AnchorPane.rightAnchor="9.400000000000034">
+                <Label layoutX="45.0" layoutY="14.0" prefHeight="58.0" prefWidth="758.0" text="FarmHub - Gestão agrária em suas mãos" textAlignment="CENTER" textFill="SEAGREEN" AnchorPane.rightAnchor="46.200000000000045">
                     <font>
-                        <Font name="System Bold" size="30.0" />
+                        <Font name="System Bold" size="40.0" />
                     </font>
                 </Label>
             </children>

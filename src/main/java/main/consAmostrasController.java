@@ -17,10 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
-public class newUserController extends Nav {
-
-    @FXML
-    private StackPane mainContent;
+public class consAmostrasController extends Nav {
 
     // Variáveis para cada botão (com @FXML)
     @FXML
@@ -47,25 +44,7 @@ public class newUserController extends Nav {
     // Métodos em botoes para abrir paginas
     @FXML
     private void goToUsuario(ActionEvent event) {
-
         loadScreen("/main/usuario.fxml", event);
-    }
-
-    @FXML
-    private void handleAtividades() {
-
-        showAlert("Menu Atividades", "Você clicou em ATIVIDADES");
-    }
-
-    @FXML
-    private void handleAmostras() {
-
-        showAlert("Menu Amostras", "Você clicou em AMOSTRAS");
-    }
-
-    @FXML
-    private void returnToMenu(ActionEvent event){
-        loadScreen("/main/main.fxml", event);
     }
 
     @FXML
@@ -103,6 +82,11 @@ public class newUserController extends Nav {
     @FXML
     private void openConsAmostras(ActionEvent event){
         Nav.loadScreenMenu("/main/consAmostras.fxml", event);
+    }
+
+    @FXML
+    private void returnToMenuM(ActionEvent event){
+        Nav.loadScreenMenu("/main/main.fxml", event);
     }
 
     // Método auxiliar para mostrar alertas
