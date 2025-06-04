@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #b8b8b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.UsuarioController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #b8b8b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.consAtividadeController">
     <left>
         <BorderPane prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <top>
@@ -83,15 +83,15 @@
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Label>
-                <TextField layoutX="311.0" layoutY="165.0" prefHeight="26.0" prefWidth="134.0" promptText="Nome da Atividade" />
-                <Button layoutX="459.0" layoutY="165.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" />
-                <TableView layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="425.0">
+                <TextField fx:id="campoBusca" layoutX="311.0" layoutY="165.0" prefHeight="26.0" prefWidth="134.0" promptText="Nome da Atividade" />
+                <Button layoutX="459.0" layoutY="165.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" onAction="#buscarAtividade"/>
+                <TableView fx:id="tabela" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="425.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Nome" />
-                        <TableColumn prefWidth="75.0" text="Início" />
-                        <TableColumn prefWidth="75.0" text="Término" />
-                        <TableColumn prefWidth="131.20001220703125" text="Participantes" />
-                        <TableColumn prefWidth="65.5999755859375" text="Status" />
+                        <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
+                        <TableColumn fx:id="colInicio" prefWidth="75.0" text="Início" />
+                        <TableColumn fx:id="colTermino" prefWidth="75.0" text="Término" />
+                        <TableColumn fx:id="colParticipantes" prefWidth="131.20001220703125" text="Participantes" />
+                        <TableColumn fx:id="colStatus" prefWidth="65.5999755859375" text="Status" />
                     </columns>
                 </TableView>
             <Label layoutX="262.0" layoutY="72.0" prefHeight="31.0" prefWidth="297.0" text="Consultar Atividades" textAlignment="CENTER" textFill="SEAGREEN">

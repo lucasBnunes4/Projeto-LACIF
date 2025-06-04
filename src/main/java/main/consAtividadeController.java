@@ -11,11 +11,17 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import main.consAtividadeDAO;
+import main.modelAtividade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class consAtividadeController extends Nav {
 
@@ -40,6 +46,42 @@ public class consAtividadeController extends Nav {
 
     @FXML
     private MenuItem consMateriais;
+
+    //Para busca
+    @FXML private TextField campoBusca;
+    @FXML private TableView<modelAtividade> tabela;
+    @FXML private TableColumn<modelAtividade, String> colNome;
+    @FXML private TableColumn<modelAtividade, LocalDate> colInicio;
+    @FXML private TableColumn<modelAtividade, LocalDate> colTermino;
+    @FXML private TableColumn<modelAtividade, String> colParticipantes;
+    @FXML private TableColumn<modelAtividade, String> colStatus;
+
+    private consAtividadeDAO dao = new consAtividadeDAO();
+
+    @FXML
+    public void initialize() {
+        // Configurar as colunas da tabela
+        colNome.setCellValueFactory(new PropertyValueFactory<>("nomeAtividade"));
+        colInicio.setCellValueFactory(new PropertyValueFactory<>("inicioAtividade"));
+        colTermino.setCellValueFactory(new PropertyValueFactory<>("fimAtividade"));
+        colParticipantes.setCellValueFactory(new PropertyValueFactory<>("participantes"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("statusAtividade"));
+    }
+
+    @FXML
+    private void buscarAtividade() {
+        String nomeAtividade = campoBusca.getText().trim();
+        if (!nomeAtividade.isEmpty()) {
+            ObservableList<modelAtividade> dados = FXCollections.observableArrayList(dao.buscarPorNome(nomeAtividade));
+            tabela.setItems(dados);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, digite um nome para buscar.");
+            alert.showAndWait();
+        }
+    }
 
     // Métodos em botoes para abrir paginas
     @FXML

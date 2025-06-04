@@ -7,13 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import java.time.LocalDate;
 
 import java.io.IOException;
 
@@ -90,13 +91,49 @@ public class addAtividadesController extends Nav {
         Nav.loadScreenMenu("/main/main.fxml", event);
     }
 
-    // Método auxiliar para mostrar alertas
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+
+    //inseria as atividades
+    @FXML private TextField nomeAtividadeField;
+    @FXML private DatePicker inicioPicker;
+    @FXML private TextField participantesField;
+    @FXML private TextField statusField;
+    @FXML private DatePicker terminoPicker;
+
+    private consAtividadeDAO dao = new consAtividadeDAO();
+
+
+    @FXML
+    private void handleRegistrar(ActionEvent event) {
+        try {
+            modelAtividade atividade = new modelAtividade(
+                    nomeAtividadeField.getText(),
+                    inicioPicker.getValue(),
+                    terminoPicker.getValue(),
+                    participantesField.getText(),
+                    statusField.getText()
+            );
+
+            if (dao.registrarAtividade(atividade)) {
+                showAlert("Sucesso", "Atividade registrada com sucesso!");
+                limparCampos();
+            } else {
+                showAlert("Erro", "Falha ao registrar atividade.");
+            }
+        } catch (Exception e) {
+            showAlert("Erro", "Preencha todos os campos corretamente.");
+        }
+    }
+
+    private void showAlert(String sucesso, String s) {
+
+    }
+
+    private void limparCampos() {
+        nomeAtividadeField.clear();
+        inicioPicker.setValue(null);
+        terminoPicker.setValue(null);
+        participantesField.clear();
+        statusField.clear();
     }
 }
 

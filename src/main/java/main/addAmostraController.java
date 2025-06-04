@@ -1,21 +1,11 @@
 package main;
 
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.StackPane;
-import main.Nav;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
-import java.io.IOException;
 
 public class addAmostraController extends Nav {
 
