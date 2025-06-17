@@ -14,4 +14,6 @@ module main {
     exports main;
 
     requires java.sql;
+
+    opens main.models to javafx.base, javafx.fxml;
 }

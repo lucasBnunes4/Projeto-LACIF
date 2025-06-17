@@ -14,6 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import main.daos.consAtividadeDAO;
+
 import java.time.LocalDate;
 
 import java.io.IOException;
@@ -99,13 +101,13 @@ public class addAtividadesController extends Nav {
     @FXML private TextField statusField;
     @FXML private DatePicker terminoPicker;
 
-    private consAtividadeDAO dao = new consAtividadeDAO();
+    private main.daos.consAtividadeDAO dao = new consAtividadeDAO();
 
 
     @FXML
     private void handleRegistrar(ActionEvent event) {
         try {
-            modelAtividade atividade = new modelAtividade(
+            main.models.modelAtividade atividade = new main.models.modelAtividade(
                     nomeAtividadeField.getText(),
                     inicioPicker.getValue(),
                     terminoPicker.getValue(),

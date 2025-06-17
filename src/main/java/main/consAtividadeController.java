@@ -13,8 +13,8 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import main.consAtividadeDAO;
-import main.modelAtividade;
+import main.daos.consAtividadeDAO;
+import main.models.modelAtividade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,7 +56,7 @@ public class consAtividadeController extends Nav {
     @FXML private TableColumn<modelAtividade, String> colParticipantes;
     @FXML private TableColumn<modelAtividade, String> colStatus;
 
-    private consAtividadeDAO dao = new consAtividadeDAO();
+    private main.daos.consAtividadeDAO dao = new consAtividadeDAO();
 
     @FXML
     public void initialize() {
@@ -73,6 +73,7 @@ public class consAtividadeController extends Nav {
         String nomeAtividade = campoBusca.getText().trim();
         if (!nomeAtividade.isEmpty()) {
             ObservableList<modelAtividade> dados = FXCollections.observableArrayList(dao.buscarPorNome(nomeAtividade));
+            System.out.println("Itens retornados: " + dados.size());
             tabela.setItems(dados);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

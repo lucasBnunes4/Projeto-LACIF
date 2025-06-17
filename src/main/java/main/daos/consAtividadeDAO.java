@@ -1,6 +1,6 @@
-package main;
+package main.daos;
 
-import main.modelAtividade;
+import main.models.modelAtividade;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +40,8 @@ public class consAtividadeDAO {
             System.err.println("Erro ao buscar atividades: " + e.getMessage());
             e.printStackTrace();
         }
+
+        System.out.println("Buscando por nome: " + nome);
         return atividades;
     }
 

@@ -7,6 +7,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -34,8 +36,8 @@
                         </SplitMenuButton>
                         <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="ATIVIDADES" textFill="SEAGREEN">
                             <items>
-                                <MenuItem onAction="#openAddAtividades" mnemonicParsing="false" text="ADICIONAR" />
-                                <MenuItem onAction="#openConsAtividades" mnemonicParsing="false" text="CONSULTAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#openAddAtividades" text="ADICIONAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#openConsAtividades" text="CONSULTAR" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="14.0" />
@@ -43,8 +45,8 @@
                         </SplitMenuButton>
                         <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="AMOSTRAS" textFill="SEAGREEN">
                             <items>
-                                <MenuItem onAction="#openAddAmostras" mnemonicParsing="false" text="ADICIONAR" />
-                                <MenuItem onAction="#openConsAmostras" mnemonicParsing="false" text="CONSULTAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#openAddAmostras" text="ADICIONAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#openConsAmostras" text="CONSULTAR" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="14.0" />
@@ -124,6 +126,11 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
+            <ImageView fitHeight="100.0" fitWidth="75.0" layoutX="761.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../1dddb607-2c04-452e-9a20-3b39083287dc.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
     </center>

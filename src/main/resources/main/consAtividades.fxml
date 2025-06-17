@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,7 +21,7 @@
             <top>
                 <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="150.0" spacing="80.0" style="-fx-background-color: #2E8B57;" BorderPane.alignment="CENTER">
                     <children>
-                        <Button  alignment="TOP_CENTER" mnemonicParsing="false" onAction="#goToUsuario" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #FFFAF0;" text="USUÁRIO" textAlignment="CENTER">
+                        <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#goToUsuario" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #FFFAF0;" text="USUÁRIO" textAlignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -35,8 +37,8 @@
                         </SplitMenuButton>
                         <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="ATIVIDADES" textFill="SEAGREEN">
                             <items>
-                                <MenuItem onAction="#openAddAtividades" mnemonicParsing="false" text="ADICIONAR" />
-                                <MenuItem onAction="#returnToMenuM" mnemonicParsing="false" text="VOLTAR PARA O MENU" />
+                                <MenuItem mnemonicParsing="false" onAction="#openAddAtividades" text="ADICIONAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#returnToMenuM" text="VOLTAR PARA O MENU" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="14.0" />
@@ -44,8 +46,8 @@
                         </SplitMenuButton>
                         <SplitMenuButton mnemonicParsing="false" style="-fx-background-color: #FFFAF0;" text="AMOSTRAS" textFill="SEAGREEN">
                             <items>
-                                <MenuItem onAction="#openAddAmostras" mnemonicParsing="false" text="ADICIONAR" />
-                                <MenuItem onAction="#openConsAmostras" mnemonicParsing="false" text="CONSULTAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#openAddAmostras" text="ADICIONAR" />
+                                <MenuItem mnemonicParsing="false" onAction="#openConsAmostras" text="CONSULTAR" />
                             </items>
                             <font>
                                 <Font name="System Bold" size="14.0" />
@@ -84,7 +86,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="campoBusca" layoutX="311.0" layoutY="165.0" prefHeight="26.0" prefWidth="134.0" promptText="Nome da Atividade" />
-                <Button layoutX="459.0" layoutY="165.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" onAction="#buscarAtividade"/>
+                <Button layoutX="459.0" layoutY="165.0" mnemonicParsing="false" onAction="#buscarAtividade" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" />
                 <TableView fx:id="tabela" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="425.0">
                     <columns>
                         <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
@@ -99,6 +101,11 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
+            <ImageView fitHeight="100.0" fitWidth="75.0" layoutX="761.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../1dddb607-2c04-452e-9a20-3b39083287dc.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
     </center>
