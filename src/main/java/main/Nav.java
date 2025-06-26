@@ -14,9 +14,9 @@ import java.io.IOException;
 
 public class Nav {
 
-    void loadScreen(String fxmlpath, ActionEvent event){
+    public static void loadScreen(String fxmlpath, ActionEvent event){
     try {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlpath));
+        Parent root = FXMLLoader.load(Nav.class.getResource(fxmlpath));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

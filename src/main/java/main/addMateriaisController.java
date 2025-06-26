@@ -1,56 +1,48 @@
 package main;
 
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.StackPane;
-import main.Nav;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.*;
+import main.daos.*;
+import main.models.*;
+import java.util.List;
+import java.net.URL;
+import java.sql.*;
+import java.util.*;
+import main.Nav;
 
-import java.io.IOException;
 
-public class addMateriaisController extends Nav {
+public class addMateriaisController implements Initializable {
 
 
-    // Variáveis para cada botão (com @FXML)
-    @FXML
-    private Button usuarioBtn;
+    // Variáveis para cada botão do menu
+    @FXML private Button usuarioBtn;
+    @FXML private Button materiaisBtn;
+    @FXML private Button atividadesBtn;
+    @FXML private Button amostrasBtn;
+    @FXML private Button inicioBtn;
+    @FXML private MenuItem addMateriais;
+    @FXML private MenuItem consMateriais;
 
-    @FXML
-    private Button materiaisBtn;
+    // variáveis dos campus de add
+    @FXML private TextField txtNomeMaterialAdd;
+    @FXML private ComboBox<String> cbTipoMaterialAdd;
+    @FXML private Button btnAddMaterial;
+    @FXML private TextField txtNomeMaterialConsult;
+    @FXML private Button btnConsultMaterial;
 
-    @FXML
-    private Button atividadesBtn;
-
-    @FXML
-    private Button amostrasBtn;
-
-    @FXML
-    private Button inicioBtn;
-
-    @FXML
-    private MenuItem addMateriais;
-
-    @FXML
-    private MenuItem consMateriais;
+    private materialDao materialDao;
 
     // Métodos em botoes para abrir paginas
     @FXML
     private void goToUsuario(ActionEvent event) {
-        loadScreen("/main/usuario.fxml", event);
+        Nav.loadScreen("/main/usuario.fxml", event);
     }
 
     @FXML
     private void returnToStart(ActionEvent event) {
-        loadScreen("/main/hello-view.fxml", event);
+        Nav.loadScreen("/main/hello-view.fxml", event);
     }
 
 
@@ -92,11 +84,81 @@ public class addMateriaisController extends Nav {
 
     // Método auxiliar para mostrar alertas
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        materialDao = new materialDao();
+        // Inicializa o ComboBox com tipos de material (exemplo de ENUM do seu SQL)
+        cbTipoMaterialAdd.getItems().addAll("Campo", "Laboratório");
+    }
+
+
+    @FXML
+    private void handleAdicionarMaterial(ActionEvent event) {
+        String nomeMaterial = txtNomeMaterialAdd.getText().trim();
+        String tipoMaterial = cbTipoMaterialAdd.getValue();
+
+        if (nomeMaterial.isEmpty() || tipoMaterial == null) {
+            showAlert("Erro de Entrada", "Por favor, preencha todos os campos para adicionar o material.");
+            return;
+        }
+
+        modelMaterial material = new modelMaterial(nomeMaterial, tipoMaterial);
+
+        try {
+            materialDao.adicionarMaterial(material);
+            showAlert("Sucesso", "Material adicionado com sucesso!");
+            limparCamposAdicionar();
+        } catch (SQLException e) {
+            showAlert("Erro", "Erro ao adicionar material: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleConsultarMaterial() {
+        String nomeMaterial = txtNomeMaterialConsult.getText().trim();
+
+        if (nomeMaterial.isEmpty()) {
+            showAlert("Erro", "Digite o nome do material para consultar!");
+            return;
+        }
+
+        try {
+            modelMaterial material = materialDao.consultarMaterial(nomeMaterial);
+
+            if (material != null) {
+                String status = material.isDisponivel() ? "Disponível" : "Em uso";
+                String mensagem = "Material: " + material.getNomeMaterial() +
+                        "\nTipo: " + material.getTipoMaterial() +
+                        "\nStatus: " + status;
+
+                if (!material.isDisponivel()) {
+                    modelUser usuario = materialDao.consultarUsuarioComMaterial(material.getId());
+                    if (usuario != null) {
+                        mensagem += "\nUsuário: " + usuario.getNome() +
+                                "\nMatrícula: " + usuario.getMatricula();
+                    }
+                }
+
+                showAlert("Consulta", mensagem);
+            } else {
+                showAlert("Consulta", "Material não encontrado!");
+            }
+        } catch (SQLException e) {
+            showAlert("Erro", "Erro ao consultar material: " + e.getMessage());
+        }
+    }
+
+    private void limparCamposAdicionar() {
+        txtNomeMaterialAdd.clear();
+        cbTipoMaterialAdd.getSelectionModel().clearSelection();
+    }
+
 }
 

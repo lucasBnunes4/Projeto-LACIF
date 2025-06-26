@@ -3,25 +3,35 @@ package main.models;
 import java.time.LocalDate;
 
 public class modelUser {
-    private String nomeCompleto;
+    private int idUsuario;
+    private String nome;
     private String cargo;
     private LocalDate dataNascimento;
     private double valorBolsa;
     private String escala;
-    private String horarios;
+    private String horario;
+    private String matricula;
 
-    public modelUser(String nomeCompleto, String cargo, LocalDate dataNascimento, double valorBolsa, String escala, String horarios) {
-        this.nomeCompleto = nomeCompleto;
+    public modelUser(int idUsuario, String nome, String cargo, LocalDate dataNascimento, double valorBolsa, String escala, String horario, String matricula) {
+        this.idUsuario = idUsuario;
+        this.nome = nome;
         this.cargo = cargo;
         this.dataNascimento = dataNascimento;
         this.valorBolsa = valorBolsa;
         this.escala = escala;
-        this.horarios = horarios;
+        this.horario = horario;
+        this.matricula = matricula;
+    }
+
+    public modelUser() {
+
     }
 
     // Getters
-    public String getNomeCompleto() {
-        return nomeCompleto;
+    public int getIdUsuario() {return idUsuario;}
+
+    public String getNome() {
+        return nome;
     }
 
     public String getCargo() {
@@ -40,13 +50,18 @@ public class modelUser {
         return escala;
     }
 
-    public String getHorarios() {
-        return horarios;
+    public String getHorario() {
+        return horario;
     }
 
+    public String getMatricula() { return matricula; }
+
     // Setters
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
+
+    public void setIdUsuario(int id_usuario) {this.idUsuario = id_usuario;}
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setCargo(String cargo) {
@@ -65,8 +80,10 @@ public class modelUser {
         this.escala = escala;
     }
 
-    public void setHorarios(String horarios) {
-        this.horarios = horarios;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
+
+    public void setMatricula(String matricula) { this.matricula = matricula; }
 }
 

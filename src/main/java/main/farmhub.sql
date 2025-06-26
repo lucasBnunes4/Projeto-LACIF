@@ -12,22 +12,14 @@ CREATE TABLE atividades (
     
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome_completo VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     valor_bolsa DECIMAL(10,2) DEFAULT 0.00,
     cargo VARCHAR(50) NOT NULL,
     data_nascimento DATE NOT NULL,
-    escala_segunda BOOLEAN DEFAULT FALSE,
-    escala_terca BOOLEAN DEFAULT FALSE,
-    escala_quarta BOOLEAN DEFAULT FALSE,
-    escala_quinta BOOLEAN DEFAULT FALSE,
-    escala_sexta BOOLEAN DEFAULT FALSE,
-    horarios_segunda VARCHAR(50),
-    horarios_terca VARCHAR(50),
-    horarios_quarta VARCHAR(50),
-    horarios_quinta VARCHAR(50),
-    horarios_sexta VARCHAR(50),
-    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-    ativo BOOLEAN DEFAULT TRUE
+    valor_bolsa DOUBLE NOT NULL,
+    escala VARCHAR(50),
+    horario VARCHAR(50),
+    matricula VARCHAR(15)
 );
 CREATE TABLE materiais (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -73,3 +65,4 @@ CREATE TABLE amostras (
     tratamento VARCHAR(100) NOT NULL,
     peso_total DECIMAL(10,2) NOT NULL
 );
+
