@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #b8b8b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.addMateriaisController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #b8b8b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.addAmostraController">
     <left>
         <BorderPane prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <top>
@@ -94,52 +95,43 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <DatePicker layoutX="187.0" layoutY="344.0" promptText="Corte" />
+                <DatePicker fx:id="dtCorte" layoutX="187.0" layoutY="344.0" promptText="Corte" />
                 <Label layoutX="404.0" layoutY="342.0" prefHeight="30.0" prefWidth="173.0" text="Data da pesagem:" textAlignment="CENTER" textFill="SEAGREEN">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <DatePicker layoutX="590.0" layoutY="344.0" promptText="Pesagem" />
-                <TextField layoutX="123.0" layoutY="398.0" prefHeight="26.0" prefWidth="86.0" promptText="Número" />
+                <DatePicker fx:id="dtPesagem" layoutX="590.0" layoutY="344.0" promptText="Pesagem" />
+                <TextField fx:id="txtParcela" layoutX="123.0" layoutY="398.0" prefHeight="26.0" prefWidth="86.0" promptText="Número" />
                 <Label layoutX="40.0" layoutY="395.0" prefHeight="30.0" prefWidth="75.0" text="Parcela:" textAlignment="CENTER" textFill="SEAGREEN">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <TextField layoutX="179.0" layoutY="271.0" prefHeight="19.0" prefWidth="173.0" promptText="Em g" />
+                <TextField fx:id="txtPesoNatural" layoutX="179.0" layoutY="271.0" prefHeight="19.0" prefWidth="173.0" promptText="Peso Natural em g" />
                 <Label layoutX="40.0" layoutY="269.0" prefHeight="30.0" prefWidth="126.0" text="Peso natural:" textAlignment="CENTER" textFill="SEAGREEN">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button layoutX="368.0" layoutY="522.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="113.0" style="-fx-background-color: seagreen;" text="REGISTRAR" textFill="WHITE">
+                <Button onAction="#cadastrarAmostra" layoutX="368.0" layoutY="522.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="113.0" style="-fx-background-color: seagreen;" text="REGISTRAR" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Button>
-            <SplitMenuButton layoutX="210.0" layoutY="216.0" mnemonicParsing="false" style="-fx-background-color: seagreen;" text="Tipo da amostra">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Capim Tamani" />
-                <MenuItem mnemonicParsing="false" text="Amendoim" />
-              </items>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </SplitMenuButton>
-            <TextField layoutX="487.0" layoutY="271.0" prefHeight="19.0" prefWidth="173.0" promptText="Em g" />
+            <TextField fx:id="txtPesoSeco" layoutX="487.0" layoutY="271.0" prefHeight="19.0" prefWidth="173.0" promptText="Peso Seco em g" />
             <Label layoutX="378.0" layoutY="269.0" prefHeight="30.0" prefWidth="100.0" text="Peso seco:" textAlignment="CENTER" textFill="SEAGREEN">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="381.0" layoutY="398.0" prefHeight="26.0" prefWidth="101.0" promptText="Tratamento" />
+            <TextField fx:id="txtTratamento" layoutX="381.0" layoutY="398.0" prefHeight="26.0" prefWidth="101.0" promptText="Tratamento" />
             <Label layoutX="257.0" layoutY="396.0" prefHeight="30.0" prefWidth="118.0" text="Tratamento:" textAlignment="CENTER" textFill="SEAGREEN">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="724.0" layoutY="398.0" prefHeight="26.0" prefWidth="82.0" promptText="Em g" />
+            <TextField fx:id="txtPesoTotal" layoutX="724.0" layoutY="398.0" prefHeight="26.0" prefWidth="82.0" promptText="Total em g" />
             <Label layoutX="509.0" layoutY="396.0" prefHeight="30.0" prefWidth="214.0" text="Peso total da amostra:" textAlignment="CENTER" textFill="SEAGREEN">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -150,6 +142,7 @@
                   <Image url="@../1dddb607-2c04-452e-9a20-3b39083287dc.png" />
                </image>
             </ImageView>
+            <ComboBox fx:id="cmbTipoAmostra" layoutX="217.0" layoutY="216.0" prefWidth="150.0" promptText="Selecione o Tipo" style="-fx-background-color: seagreen;" />
             </children>
         </AnchorPane>
     </center>

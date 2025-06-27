@@ -1,11 +1,17 @@
 package main;
 
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert.AlertType;
+import main.daos.*;
+import main.models.*;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import java.time.LocalDate;
+
 
 public class addAmostraController extends Nav {
 
@@ -79,6 +85,20 @@ public class addAmostraController extends Nav {
         Nav.loadScreenMenu("/main/main.fxml", event);
     }
 
+    //variáveis para cadastrar amostras
+    @FXML private ComboBox<String> cmbTipoAmostra;
+    @FXML private TextField txtPesoNatural;
+    @FXML private TextField txtPesoSeco;
+    @FXML private TextField txtParcela;
+    @FXML private TextField txtTratamento;
+    @FXML private TextField txtPesoTotal;
+    @FXML private DatePicker dtCorte;
+    @FXML private DatePicker dtPesagem;
+    @FXML private Button cadastrarAmostra;
+
+    private amostrasDao dao = new amostrasDao();
+
+
     // Método auxiliar para mostrar alertas
     private void showAlert(String title, String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -86,6 +106,42 @@ public class addAmostraController extends Nav {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void initialize() {
+        cmbTipoAmostra.getItems().addAll("Amendoin Forrageiro", "Capim Tamani");
+    }
+
+    @FXML
+    private void cadastrarAmostra() {
+        try {
+
+            String tipoAmostra = cmbTipoAmostra.getValue();
+            double pesoNatural = Double.parseDouble(txtPesoNatural.getText().replace(",", "."));
+            double pesoSeco = Double.parseDouble(txtPesoSeco.getText().replace(",", "."));
+            int parcela = Integer.parseInt(txtParcela.getText().trim());
+            String tratamento = txtTratamento.getText();
+            LocalDate dataCorte = dtCorte.getValue();
+            LocalDate dataPesagem = dtPesagem.getValue();
+            double pesoTotal = Double.parseDouble(txtPesoTotal.getText().replace(",", "."));
+
+            int idAmostra = 0;
+            modelAmostras amostras = new modelAmostras(idAmostra, tipoAmostra, pesoNatural, pesoSeco, dataCorte, dataPesagem, parcela, tratamento, pesoTotal);
+
+
+            boolean sucesso = dao.registrarAmostra(amostras);
+            Alert alerta = new Alert(sucesso ? AlertType.INFORMATION : AlertType.ERROR);
+            alerta.setHeaderText(null);
+            alerta.setContentText(sucesso ? "Amostra cadastrado com sucesso!" : "Erro ao cadastrar amostra");
+            alerta.showAndWait();
+        } catch (Exception e) {
+            Alert alerta = new Alert(AlertType.ERROR);
+            alerta.setHeaderText("Erro");
+            alerta.setHeaderText("Preencha todos os campos corretamente.");
+            alerta.showAndWait();
+            e.printStackTrace();
+        }
     }
 }
 

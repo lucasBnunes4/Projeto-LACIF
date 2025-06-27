@@ -21,39 +21,26 @@ CREATE TABLE usuarios (
     horario VARCHAR(50),
     matricula VARCHAR(15)
 );
-CREATE TABLE materiais (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL UNIQUE,
-    tipo ENUM('Campo', 'Laboratório') NOT NULL
-);
-CREATE TABLE retiradas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    matricula VARCHAR(20) NOT NULL,
-    material_id INT NOT NULL,
-    data_retirada DATE NOT NULL,
-    FOREIGN KEY (material_id) REFERENCES materiais(id)
-);
-CREATE TABLE devolucoes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    material_id INT NOT NULL,
-    data_devolucao DATE NOT NULL,
-    FOREIGN KEY (material_id) REFERENCES materiais(id)
-);
-
 CREATE TABLE movimentacoes_materiais (
     id_movimentacao INT AUTO_INCREMENT PRIMARY KEY,
     id_material INT NOT NULL,
     id_usuario INT NOT NULL,
     matricula_usuario VARCHAR(20) NOT NULL,
     tipo_movimentacao ENUM('Retirada', 'Devolução') NOT NULL,
-    data_movimentacao DATETIME NOT NULL,
-    data_prevista_devolucao DATE,
-    data_devolucao_efetiva DATE,
+    data_movimentacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     observacoes TEXT,
-    FOREIGN KEY (id_material) REFERENCES materiais(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    status ENUM('Ativa', 'Finalizada') DEFAULT 'Ativa',
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (matricula_usuario) REFERENCES usuarios(matricula)
 );
-
+CREATE TABLE materiais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_material VARCHAR(100) NOT NULL UNIQUE,
+    tipo_material ENUM('Campo', 'Laboratório') NOT NULL,
+    disponivel BOOLEAN DEFAULT TRUE,
+    ultima_movimentacao_id INT NULL,
+    FOREIGN KEY (ultima_movimentacao_id) REFERENCES movimentacoes_materiais(id_movimentacao)
+);
 CREATE TABLE amostras (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo ENUM('Capim Tamani', 'Amendoim') NOT NULL,

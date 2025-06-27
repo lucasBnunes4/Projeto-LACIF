@@ -1,21 +1,17 @@
 package main;
 
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.StackPane;
-import main.Nav;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
-import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import main.Nav;
+import java.time.LocalDate;
+import main.daos.*;
+import main.models.*;
 
 public class consAmostrasController extends Nav {
 
@@ -75,19 +71,46 @@ public class consAmostrasController extends Nav {
     }
 
     @FXML
-    private void openAddAmostras(ActionEvent event){
+    private void openAddAmostras(ActionEvent event) {
         Nav.loadScreenMenu("/main/addAmostras.fxml", event);
     }
 
     @FXML
-    private void openConsAmostras(ActionEvent event){
+    private void openConsAmostras(ActionEvent event) {
         Nav.loadScreenMenu("/main/consAmostras.fxml", event);
     }
 
     @FXML
-    private void returnToMenuM(ActionEvent event){
+    private void returnToMenuM(ActionEvent event) {
         Nav.loadScreenMenu("/main/main.fxml", event);
     }
+
+    //variaveis para busca
+    @FXML
+    private ComboBox<String> cbxBuscarAmostra;
+    @FXML
+    private Button buscarAmostra;
+    @FXML
+    private TableView<modelAmostras> tabelaAmostra;
+    @FXML
+    private TableColumn<modelAmostras, String> colTipoAmostra;
+    @FXML
+    private TableColumn<modelAmostras, Integer> colParcela;
+    @FXML
+    private TableColumn<modelAmostras, Double> colPesoNatural;
+    @FXML
+    private TableColumn<modelAmostras, Double> colPesoSeco;
+    @FXML
+    private TableColumn<modelAmostras, LocalDate> colDataCorte;
+    @FXML
+    private TableColumn<modelAmostras, LocalDate> colDataPesagem;
+    @FXML
+    private TableColumn<modelAmostras, String> colTratamento;
+    @FXML
+    private TableColumn<modelAmostras, Double> colPesoTotal;
+
+    private main.daos.amostrasDao dao = new amostrasDao();
+
 
     // Método auxiliar para mostrar alertas
     private void showAlert(String title, String message) {
@@ -97,4 +120,36 @@ public class consAmostrasController extends Nav {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
+    //métodos para busca das amostras
+    @FXML
+    public void initialize() {
+        cbxBuscarAmostra.getItems().addAll("Capim Tamani", "Amendoin Forrageiro");
+        colTipoAmostra.setCellValueFactory(new PropertyValueFactory<>("tipoAmostra"));
+        colParcela.setCellValueFactory(new PropertyValueFactory<>("parcela"));
+        colPesoNatural.setCellValueFactory(new PropertyValueFactory<>("pesoNatural"));
+        colPesoSeco.setCellValueFactory(new PropertyValueFactory<>("pesoSeco"));
+        colDataCorte.setCellValueFactory(new PropertyValueFactory<>("dataCorte"));
+        colDataPesagem.setCellValueFactory(new PropertyValueFactory<>("dataPesagem"));
+        colTratamento.setCellValueFactory(new PropertyValueFactory<>("tratamento"));
+        colPesoTotal.setCellValueFactory(new PropertyValueFactory<>("pesoTotal"));
+    }
+
+    @FXML
+    private void buscarAmostra() {
+        String tipoAmostra = cbxBuscarAmostra.getSelectionModel().getSelectedItem();
+        if (tipoAmostra != null && !tipoAmostra.isEmpty()) {
+            ObservableList<modelAmostras> dados = FXCollections.observableArrayList(dao.buscarAmostra(tipoAmostra));
+            System.out.println("Itens retornados: " + dados.size());
+            tabelaAmostra.setItems(dados);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um valor para buscar.");
+            alert.showAndWait();
+        }
+    }
+
 }
