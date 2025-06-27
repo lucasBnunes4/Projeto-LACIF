@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
@@ -12,7 +13,9 @@ public class HelloApplication extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/main/hello-view.fxml"));
             Scene scene = new Scene(root, 1000, 600);
-            stage.setTitle("Sistema LACIF");
+            stage.setTitle("Farmhub");
+            Image icon = new Image(getClass().getResourceAsStream("/logonova.png"));
+            stage.getIcons().add(icon);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

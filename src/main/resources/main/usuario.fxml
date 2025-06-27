@@ -87,15 +87,15 @@
                 </Label>
                 <TextField fx:id="campoBuscaUsuario" layoutX="277.0" layoutY="165.0" prefHeight="26.0" prefWidth="134.0" promptText="Matrícula" />
                 <Button layoutX="425.0" layoutY="165.0" mnemonicParsing="false" onAction="#buscarUsuario" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" />
-                <TableView fx:id="tabelaUsuario" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="602.0">
+                <TableView fx:id="tabelaUsuario" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="815.0">
                     <columns>
-                        <TableColumn fx:id="colNomeUsuario" prefWidth="75.0" text="Nome" />
-                        <TableColumn fx:id="colMatricula" prefWidth="75.0" text="Matrícula" />
-                        <TableColumn fx:id="colCargo" prefWidth="75.0" text="Cargo" />
-                        <TableColumn fx:id="colDataNascimento" prefWidth="131.20001220703125" text="Data de nascimento" />
-                        <TableColumn fx:id="colBolsa" prefWidth="65.5999755859375" text="Bolsa" />
-                        <TableColumn fx:id="colEscala" minWidth="6.103515625E-5" prefWidth="87.19998168945312" text="Dias presente" />
-                        <TableColumn fx:id="colHorarios" prefWidth="92.79998779296875" text="Horários" />
+                        <TableColumn fx:id="colNomeUsuario" prefWidth="99.0" text="Nome" />
+                        <TableColumn fx:id="colMatricula" prefWidth="92.0" text="Matrícula" />
+                        <TableColumn fx:id="colCargo" prefWidth="89.0" text="Cargo" />
+                        <TableColumn fx:id="colDataNascimento" prefWidth="123.0" text="Data de nascimento" />
+                        <TableColumn fx:id="colBolsa" prefWidth="65.0" text="Bolsa" />
+                        <TableColumn fx:id="colEscala" minWidth="6.103515625E-5" prefWidth="188.0" text="Dias presente" />
+                        <TableColumn fx:id="colHorarios" prefWidth="158.0" text="Horários" />
                     </columns>
                 </TableView>
             <ImageView fitHeight="100.0" fitWidth="75.0" layoutX="761.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">

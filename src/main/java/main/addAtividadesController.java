@@ -116,18 +116,30 @@ public class addAtividadesController extends Nav {
             );
 
             if (dao.registrarAtividade(atividade)) {
-                showAlert("Sucesso", "Atividade registrada com sucesso!");
+                showAlertInfo("Sucesso", "Atividade registrada com sucesso!");
                 limparCampos();
             } else {
-                showAlert("Erro", "Falha ao registrar atividade.");
+                showAlertErr("Erro", "Falha ao registrar atividade.");
             }
         } catch (Exception e) {
-            showAlert("Erro", "Preencha todos os campos corretamente.");
+            showAlertErr("Erro", "Preencha todos os campos corretamente.");
         }
     }
 
-    private void showAlert(String sucesso, String s) {
+    private void showAlertInfo(String title, String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
+    private void showAlertErr(String title, String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void limparCampos() {

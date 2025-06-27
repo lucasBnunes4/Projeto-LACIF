@@ -85,17 +85,17 @@
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Label>
-                <Button onAction="#buscarAmostra" layoutX="461.0" layoutY="166.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" />
-                <TableView fx:id="tabelaAmostra" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="603.0">
+                <Button layoutX="461.0" layoutY="166.0" mnemonicParsing="false" onAction="#buscarAmostra" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" />
+                <TableView fx:id="tabelaAmostra" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="756.0">
                     <columns>
-                        <TableColumn fx:id="colTipoAmostra" prefWidth="77.60003471374512" text="Tipo" />
-                        <TableColumn fx:id="colParcela" prefWidth="57.599998474121094" text="Parcela" />
-                        <TableColumn fx:id="colPesoNatural" prefWidth="79.20001220703125" text="Peso Natural" />
-                        <TableColumn fx:id="colPesoSeco" prefWidth="66.4000244140625" text="Peso Seco" />
-                        <TableColumn fx:id="colDataCorte" prefWidth="75.0" text="Data Corte" />
-                        <TableColumn fx:id="colDataPesagem" prefWidth="92.79998779296875" text="Data Pesagem" />
-                        <TableColumn fx:id="colTratamento" prefWidth="75.0" text="Tratamento" />
-                        <TableColumn fx:id="colPesoTotal" prefWidth="75.0" text="Peso Total" />
+                        <TableColumn fx:id="colTipoAmostra" prefWidth="156.0" text="Tipo" />
+                        <TableColumn fx:id="colParcela" minWidth="0.0" prefWidth="50.0" text="Parcela" />
+                        <TableColumn fx:id="colPesoNatural" minWidth="5.0" prefWidth="107.0" text="Peso Natural" />
+                        <TableColumn fx:id="colPesoSeco" prefWidth="78.0" text="Peso Seco" />
+                        <TableColumn fx:id="colDataCorte" prefWidth="93.0" text="Data Corte" />
+                        <TableColumn fx:id="colDataPesagem" prefWidth="112.0" text="Data Pesagem" />
+                        <TableColumn fx:id="colTratamento" prefWidth="90.0" text="Tratamento" />
+                        <TableColumn fx:id="colPesoTotal" prefWidth="69.0" text="Peso Total" />
                     </columns>
                 </TableView>
                 <Label layoutX="283.0" layoutY="72.0" prefHeight="46.0" prefWidth="282.0" text="Consultar Amostras" textAlignment="CENTER" textFill="SEAGREEN">

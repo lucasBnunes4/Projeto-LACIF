@@ -87,13 +87,13 @@
                 </Label>
                 <TextField fx:id="campoBusca" layoutX="311.0" layoutY="165.0" prefHeight="26.0" prefWidth="134.0" promptText="Nome da Atividade" />
                 <Button layoutX="459.0" layoutY="165.0" mnemonicParsing="false" onAction="#buscarAtividade" prefHeight="6.0" prefWidth="77.0" style="-fx-background-color: #2E8B57;" text="Buscar" textFill="WHITE" />
-                <TableView fx:id="tabela" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="425.0">
+                <TableView fx:id="tabela" layoutX="23.0" layoutY="229.0" prefHeight="278.0" prefWidth="753.0">
                     <columns>
-                        <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
-                        <TableColumn fx:id="colInicio" prefWidth="75.0" text="Início" />
-                        <TableColumn fx:id="colTermino" prefWidth="75.0" text="Término" />
-                        <TableColumn fx:id="colParticipantes" prefWidth="131.20001220703125" text="Participantes" />
-                        <TableColumn fx:id="colStatus" prefWidth="65.5999755859375" text="Status" />
+                        <TableColumn fx:id="colNome" prefWidth="138.0" text="Nome" />
+                        <TableColumn fx:id="colInicio" prefWidth="93.0" text="Início" />
+                        <TableColumn fx:id="colTermino" prefWidth="128.0" text="Término" />
+                        <TableColumn fx:id="colParticipantes" prefWidth="245.0" text="Participantes" />
+                        <TableColumn fx:id="colStatus" prefWidth="148.0" text="Status" />
                     </columns>
                 </TableView>
             <Label layoutX="262.0" layoutY="72.0" prefHeight="31.0" prefWidth="297.0" text="Consultar Atividades" textAlignment="CENTER" textFill="SEAGREEN">

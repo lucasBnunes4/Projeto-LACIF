@@ -135,6 +135,7 @@ public class addAmostraController extends Nav {
             alerta.setHeaderText(null);
             alerta.setContentText(sucesso ? "Amostra cadastrado com sucesso!" : "Erro ao cadastrar amostra");
             alerta.showAndWait();
+            limparCamposAmostras();
         } catch (Exception e) {
             Alert alerta = new Alert(AlertType.ERROR);
             alerta.setHeaderText("Erro");
@@ -142,6 +143,17 @@ public class addAmostraController extends Nav {
             alerta.showAndWait();
             e.printStackTrace();
         }
+    }
+
+    private void limparCamposAmostras() {
+        cmbTipoAmostra.setValue(null);
+        txtPesoNatural.clear();
+        txtPesoSeco.clear();
+        txtParcela.clear();
+        txtTratamento.clear();
+        dtCorte.setValue(null);
+        dtPesagem.setValue(null);
+        txtPesoTotal.clear();
     }
 }
 
