@@ -1,0 +1,7 @@
+Utilização Farmhub
+
+deverá ter o jdk 24 e o javafx23
+
+pelo terminal ir na pasta do projeto-lacif e executar o seguinte comando: 
+
+java --module-path "caminho/para/seu/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml -jar target/farmhub.jar
