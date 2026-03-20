@@ -23,7 +23,7 @@ Clone o repositório:
 - Acesse a aplicação no navegador
 
 Status do Projeto
-Concluído (ou ajuste)
+Concluído 
 
 Licença
 Este projeto está licenciado sob a BSD-2-Clause License.
@@ -31,4 +31,4 @@ Você pode usar, modificar e distribuir, desde que mantenha os créditos ao auto
 
 Autor
 Lucas Batista Nunes  
-GitHub: lucasBnunes4 (github.com in Bing)
+GitHub: lucasBnunes4 
